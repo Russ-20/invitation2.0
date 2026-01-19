@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Walang pilitan to ah</title>
+    <link rel="icon" type="image/png" href="logotoha-modified.png">
+    <style>
+        /* Basic Setup */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #ffe6e6;
+            /* Soft Pink */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            /* Stops screen from scrolling when button moves */
+            touch-action: manipulation;
+        }
+
+        /* The Card Container */
+        .container {
+            background: white;
+            width: 90%;
+            max-width: 350px;
+            padding: 30px 20px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        img {
+            width: 160px;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 15px;
+        }
+
+        h1 {
+            color: #ff4d6d;
+            font-size: 1.6rem;
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+
+        /* Buttons Styling */
+        .buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            min-height: 60px;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        #yesBtn {
+            background-color: #ff4d6d;
+            color: white;
+        }
+
+        #noBtn {
+            background-color: #f0f0f0;
+            color: #666;
+            position: relative;
+            /* Stays in the box until touched */
+        }
+
+        /* Utility classes */
+        .hidden {
+            display: none;
+        }
+
+        .success-text {
+            color: #ff4d6d;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container" id="mainBox">
+        <!-- https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExYnN3cjB3NnkzY3o1ZDZyYWJuaHNmOWdqNnAwa240d2dpemM2NzZxaSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/QX81mZCxbGlqFtxqYn/giphy.gif" -->
+        <img src="emo.jpg" alt="emo pic">
+        <h1>Pwede na ba ako maging emo?</h1>
+        <div class="buttons">
+            <button id="yesBtn" onclick="secondBox()">Yes!</button>
+            <button id="noBtn" onmouseover="moveButton()" ontouchstart="moveButton()">No</button>
+        </div>
+    </div>
+    <!-- ❤️ -->
+
+    <div class="container hidden" id="secondBox">
+        <img src="smile.jpg" alt="smile picture">
+        <p class="success-text">EMOng ka-valentine ❤️</p>
+        <button id="yesBtn" onclick="showSuccess()">Nag yes ka na eh</button>
+    </div>
+
+    <div class="container hidden" id="successBox">
+        <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExeTNoaHo5a2NsbG9tZmh1aHVjamp3OHE1N3FqZjZiODRtbDh3bzRsOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/AdgYtS8pQ3pr141Jc0/giphy.gif"
+            alt="Celebration">
+        <p class="success-text">omkiii ❤️</p>
+        <button id="yesBtn" onclick="openMessenger()">Send me this emoji "💩" if you confirm</button>
+    </div>
+
+    <script>
+        // Move the "No" button randomly
+        function moveButton() {
+            const btn = document.getElementById('noBtn');
+            btn.style.position = 'absolute';
+
+            // Keeps button away from screen edges
+            const x = Math.random() * (window.innerWidth - 100);
+            const y = Math.random() * (window.innerHeight - 50);
+
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
+        }
+
+        // Switch to second screen/page
+        function secondBox() {
+            document.getElementById('mainBox').classList.add('hidden');
+            document.getElementById('secondBox').classList.remove('hidden');
+        }
+
+        // Switch to success screen
+        function showSuccess() {
+            document.getElementById('secondBox').classList.add('hidden');
+            document.getElementById('successBox').classList.remove('hidden');
+        }
+
+        // Open Messenger
+        function openMessenger() {
+            // !!! REPLACE 'YOUR.USERNAME.HERE' with your real FB username !!!
+            const username = "rasel.natividad.7";
+            window.location.href = "https://m.me/" + username;
+        }
+    </script>
+
+</body>
+
+</html>
